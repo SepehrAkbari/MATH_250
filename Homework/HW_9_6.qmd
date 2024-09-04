@@ -3,12 +3,12 @@ title: "Practice With ggplot2"
 author: "Sepehr Akbari"
 date: "9/6/2024"
 format: html
+embed-resources: true
 ---
-### Step zero
+### Loading Packages
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(modeldata)
-View(attrition)
 ```
 
 ## Problem 1
@@ -56,7 +56,7 @@ ggplot(
     fill = Attrition
   )
 ) +
-  geom_bar(position = "fill") +
+  geom_bar(position = "dodge") +
   labs(
     x = "Job Satisfaction",
     y = "Count",
@@ -64,7 +64,7 @@ ggplot(
     caption = "from attrition db",
     fill = "Attrition Status"
   ) +
-  scale_color_brewer(palette = 'Dark2')
+  scale_fill_brewer(palette = "Dark2")
 ```
 
 ## Problem 4
@@ -81,9 +81,9 @@ ggplot(
   labs(
     x = "Attrition Status",
     y = "Count",
-    title = "Corrolation of Satisfaction and Attrition",
+    title = "Comparison of Satisfaction and Attrition",
     caption = "from attrition db",
     fill = "Job Satisfaction"
   ) +
-  scale_color_brewer(palette = 'Dark2')
+  scale_fill_brewer(palette = "Dark2")
 ```
