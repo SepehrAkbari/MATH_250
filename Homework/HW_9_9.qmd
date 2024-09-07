@@ -1,0 +1,25 @@
+---
+title: "Scat!"
+author: "Sepehr Akbari"
+date: "9/9/2024"
+format: html
+embed-resources: true
+---
+# Question
+
+Refer to the scat data set from the modeldata package. Explore this set visually for patterns
+and associations between variables, then write a short narrative with 1-2 conclusions. Create
+at least 3 clear and interesting plots which support those conclusions. You may need to do a
+small amount of outside reading to learn what the relevant variables are and how they might
+be interpreted. Such information should be included in your narrative.
+
+Note: I recommend against using time as a variable in this assignment as it’s split between
+two columns
+
+# Answer
+
+### Loading Packages
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(modeldata)
+```
