@@ -106,5 +106,5 @@ ggplot(
 
 From this data we can see that:
 
-1 - 
+- 
 
