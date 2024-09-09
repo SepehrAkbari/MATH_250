@@ -7,7 +7,7 @@ embed-resources: true
 ---
 # Question
 
-Refer to the scat data set from the modeldata package. Explore this set visually for patterns
+Refer to the `scat` data set from the `modeldata` package. Explore this set visually for patterns
 and associations between variables, then write a short narrative with 1-2 conclusions. Create
 at least 3 clear and interesting plots which support those conclusions. You may need to do a
 small amount of outside reading to learn what the relevant variables are and how they might
@@ -19,7 +19,92 @@ two columns
 # Answer
 
 ### Loading Packages
+
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(modeldata)
 ```
+
+### Data Exploration
+
+```{r}
+glimpse(scat)
+```
+
+The `scat` dataset contains measurements and characteristics of scat samples collected from various species, including details like species, location found, physical dimensions, and isotope ratios, allowing for ecological and dietary analysis of the animals. This kind of data set can be useful to make data supported assumptions, or even conclusions, about different scat species.
+
+### Conclusion 1
+
+One of the interesting data collected in this data set is delta-C 13 measurement for Carbon 12 and 13 isotopes' spread ratio, which can give us insight on the scat's dietary habits. 
+
+We can try and see if there is any relation between the scats' locations and their diet. To do so, let's compare `d13C` and `Location` by species. As `Mass` also has a significant affect on a scat's diet, we'll include that as well.
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(
+  scat,
+  aes(
+    x = Location,
+    y = d13C,
+    fill = Species
+  )
+) + 
+  geom_boxplot() +
+  geom_jitter(
+    aes(color = Species, size = Mass),
+    width = 0.2, alpha = 0.5
+  ) +
+  labs(
+    title = " Scats' Location & Carbon Spread Ratio Correlation",
+    x = "Location",
+    y = "Delta-C 13",
+    size = "Mass",
+    caption = "Reid, R. E. B. (2015)."
+  ) +
+  scale_color_brewer(palette = 'Dark2') +
+  scale_fill_brewer(palette = 'Dark2') +
+  theme_minimal()
+```
+
+From this data we can see that:
+
+- At the middle location, coyotes dominate the samples, showing a wider range of d13C values compared to other species. Their d13C values vary from around -20 to -30, suggesting a more varied diet. They also have higher d13C values compared to bobcats and gray foxes, indicating they might rely on different food sources compared to the other two species.
+
+- The median of the coyote box plots suggest that most of their carbon spread ratio is not corrolated with their entire population, but rather the one's with higher mass than the other, or even potential outliers.
+
+- Gray foxes, at both middle and off_edge locations, show a narrower range of d13C values, suggesting a more consistent or specialized diet.
+
+- Larger scat samples are found among coyote and bobcat scat. This may imply that coyotes and bobcats consume more food or larger prey compared to gray foxes, whose scat samples tend to be smaller.
+
+**Summary**
+
+Coyotes,seem to have a more varied diet, especially in the middle of the habitat. In contrast, bobcats and gray foxes exhibit more specialized diets with lower d13C values. In the off_edge locations, coyotes' diet is completely different from the other species.
+
+The size of the scat seems to correlate with species dietary behavior, which has led to a smaller size gray_fox scat sample.
+
+### Conclusion 2
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(
+  scat,
+  aes(
+    x = Number,
+    y = Age,
+    color = Location,
+    size = Mass  # Map point size to the Age variable
+  )
+) + 
+  geom_jitter(alpha = 0.7) +  # Alpha transparency to avoid overlap
+  facet_wrap(~ Species) +  # Separate facet for each species
+  labs(
+    title = "Number of Scat Samples vs. Mass by Species, Location, and Age"
+  ) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  theme(legend.position = "right")
+```
+
+From this data we can see that:
+
+1 - 
+
