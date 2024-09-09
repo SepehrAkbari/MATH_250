@@ -3,6 +3,8 @@ title: "9/9 Notes"
 format: html
 embed-resources: true
 ---
+```{r}
+```
 
 ## Troubkeshooting
 
@@ -30,7 +32,7 @@ When you work inside a project, data import is much easier.
 
 ```{r}
 library(readxl)
-scooby <- read_excel("Data/scooby.xlsx")
+scooby <- read_excel(file.path(base_dir, "Data/scooby.xlsx"))
 ```
 
 ## Scooby and IMDB
