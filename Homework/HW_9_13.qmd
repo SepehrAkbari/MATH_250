@@ -1,7 +1,7 @@
 ---
 title: "Scat!"
 author: "Sepehr Akbari"
-date: "9/9/2024"
+date: "9/13/2024"
 format: html
 embed-resources: true
 ---
@@ -83,6 +83,8 @@ The size of the scat seems to correlate with species dietary behavior, which has
 
 ### Conclusion 2
 
+Another interesting data collected in this data set is the `Age` of the scat samples. We can try and see if there is any relation between the scats' age, and the number of samples collected from each specie. To get more insights from this data, we can also include the `Mass` and `Location` of the scat samples as well.
+
 ```{r, warning=FALSE, message=FALSE}
 ggplot(
   scat,
@@ -90,21 +92,40 @@ ggplot(
     x = Number,
     y = Age,
     color = Location,
-    size = Mass  # Map point size to the Age variable
+    size = Mass
   )
 ) + 
-  geom_jitter(alpha = 0.7) +  # Alpha transparency to avoid overlap
-  facet_wrap(~ Species) +  # Separate facet for each species
+  geom_jitter(alpha = 0.8) +
+  facet_wrap(~ Species) +
   labs(
-    title = "Number of Scat Samples vs. Mass by Species, Location, and Age"
+    title = "Identifying Scats' behavious using Age, Location, and Mass",
+    x = "Number of Samples Collected",
+    y = "Age",
+    size = "Mass",
+    color = "Location found",
+    caption = "Reid, R. E. B. (2015)."
   ) +
-  theme_minimal() +
   scale_color_brewer(palette = "Dark2") +
   scale_fill_brewer(palette = "Dark2") +
-  theme(legend.position = "right")
+  theme_minimal()
 ```
 
 From this data we can see that:
 
-- 
+- It can be seen that the mass of gray fox scats is generally lower than the other species, with a few exceptions. This could be due to the smaller size of gray foxes compared to coyotes and bobcats. The number of scat samples is also higher for coyotes and bobcats compared to gray foxes, this could suggest gray foxes are less common generally especially in edge and off edge areas.
 
+- Bobcats are seen to have more mass as they age, which could be due to their diet or the size of their prey. This could also be due to the fact that older bobcats are more experienced hunters and are able to catch larger prey. This corrolation between age and mass does not seem to be bold in other species.
+
+- Mass is almost evenly distributed across the age groups for coyotes, suggesting that age may not be a significant factor in determining the mass of coyote scat samples. Their location also seems to not have a significant effect on their mass either.
+
+- All samples especially gray foxes seem to have a lower number of young samples which might just suggest the danger of extinction for this species, especially as the total number of samples is lower than the other species as well.
+
+**Summary**
+
+The mass of scat samples varies across species, with gray foxes generally having lower mass compared to coyotes and bobcats. The number of scat samples is also higher for coyotes and bobcats compared to gray foxes, suggesting differences in population density or behavior. The mass of bobcat scat samples increases with age, which could be due to their diet or hunting behavior.
+
+### Conclusion 3
+
+```{r, warning=FALSE, message=FALSE}
+
+```
