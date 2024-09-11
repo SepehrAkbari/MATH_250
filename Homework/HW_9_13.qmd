@@ -235,7 +235,7 @@ ggplot(
 
 From this data we can see that:
 
--   Although its evident that Coyote scats have the most amount of Carbon and Nitrogen spread ratio by far, it cannot be concluded that the segmentation of the scat samples has a significant effect on the Delta-N 15 and Delta-C 13 values. This could be due to the fact that the physical characteristics of the scat samples do not differ significantly based on segmentation, or that the diet of the species is not significantly affected by segmentation.
+- Although its evident that Coyote scats have the most amount of Carbon and Nitrogen spread ratio by far, it cannot be concluded that the segmentation of the scat samples has a significant effect on the Delta-N 15 and Delta-C 13 values. This could be due to the fact that the physical characteristics of the scat samples do not differ significantly based on segmentation, or that the diet of the species is not significantly affected by segmentation.
 
 **Summary**
 
