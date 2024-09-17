@@ -1,5 +1,7 @@
 ---
 title: "9/9 Notes"
+author: "Sepehr Akbari"
+date: "9/9/2024"
 format: html
 embed-resources: true
 ---

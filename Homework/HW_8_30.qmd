@@ -1,7 +1,9 @@
 ---
+title: "8/30 Homework"
 author: "Sepehr Akbari"
-date: "30 August 2024"
-format: pdf
+date: "8/30/2024"
+format: html
+embed-resources: true
 ---
 
 ###### Sepehr Akbari

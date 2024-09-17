@@ -1,6 +1,9 @@
 ---
 title: "9/4 Notes"
+author: "Sepehr Akbari"
+date: "9/4/2024"
 format: html
+embed-resources: true
 ---
 
 ## Intro

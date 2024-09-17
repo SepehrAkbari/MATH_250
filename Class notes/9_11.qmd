@@ -1,6 +1,8 @@
 ---
 title: "9/11 Notes"
 author: "Sepehr Akbari"
+date: "9/11/2024"
+format: html
 embed-resources: true
 ---
 
