@@ -5,8 +5,6 @@ date: "9/9/2024"
 format: html
 embed-resources: true
 ---
-```{r}
-```
 
 ## Troubkeshooting
 
