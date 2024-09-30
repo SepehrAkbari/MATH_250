@@ -1,0 +1,93 @@
+---
+title: "Wrangling practice"
+author: "Sepehr Akbari"
+date: "10/4/2024"
+format: html
+embed-resources: true
+---
+
+## Setup
+
+Loading required libraries and the `astronauts` dataset.
+
+```{r}
+#| label: setup
+#| message: FALSE
+#| warning: FALSE
+
+library(tidyverse)
+library(readxl)
+library(gt)
+
+astronauts <- read_excel(file.path(base_dir, "Data/astronauts.xlsx"))
+```
+
+
+## Problem 1
+
+Obtain rankings of the five astronauts with the most total EVA (extra-vehicular activity)
+hours. Generate an attractive horizontal bar chart of the results.
+
+```{r}
+#| label: problem1
+#| message: FALSE
+#| warning: FALSE
+
+topEVA <- astronauts %>%
+  arrange(desc(eva_hrs_mission)) %>%
+  head(5)
+
+topEVA %>%
+  ggplot(
+    aes(
+      x = eva_hrs_mission, 
+      y = reorder(name, eva_hrs_mission) 
+      # I'm using reorder() to arrange names based on the EVA hours
+    )
+  ) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Top 5 Astronauts with Most EVA Hours",
+    x = "Total EVA Hours",
+    y = "Astronaut Name"
+  ) +
+  theme_minimal()
+```
+
+## Problem 2
+
+What are the top five occupations of astronauts? Compute the minimum, median, and maximum ages of astronauts in each of these roles. Also include the total number of times astronauts have had these occupations
+
+```{r}
+#| label: problem2
+#| message: FALSE
+#| warning: FALSE
+
+# Step 1: Calculate age based on the current year (assuming 2024 as the reference year)
+current_year <- 2024
+astronauts <- astronauts %>%
+  mutate(age = current_year - year_of_birth)
+
+# Step 2: Group by occupation and calculate the required statistics
+top_occupations <- astronauts %>%
+  group_by(occupation) %>%
+  summarise(
+    total_count = n(),               # Count of astronauts in this occupation
+    min_age = min(age, na.rm = TRUE), # Minimum age in this occupation
+    median_age = median(age, na.rm = TRUE), # Median age in this occupation
+    max_age = max(age, na.rm = TRUE)  # Maximum age in this occupation
+  ) %>%
+  arrange(desc(total_count)) %>%
+  head(5)  # Get top 5 occupations based on total count
+
+# View the result
+top_occupations
+```
+
+
+
+
+
+
+
+
