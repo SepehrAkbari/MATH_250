@@ -1,0 +1,9 @@
+---
+title: "10/21 Notes"
+author: "Sepehr Akbari"
+date: "10/21/2024"
+format: html
+embed-resources: true
+---
+
+
